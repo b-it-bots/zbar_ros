@@ -31,8 +31,10 @@
 
 #include <ros/ros.h>
 #include <nodelet/loader.h>
+#include <string>
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
   ros::init(argc, argv, "barcode_reader_node");
 
   nodelet::Loader nodelet;
@@ -43,5 +45,5 @@ int main(int argc, char **argv){
   ros::spin();
 
   return 0;
-
 }
+

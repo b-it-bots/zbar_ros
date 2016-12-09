@@ -32,6 +32,7 @@
 #include "zbar_ros/barcode_reader_nodelet.h"
 #include "pluginlib/class_list_macros.h"
 #include "std_msgs/String.h"
+#include <string>
 
 namespace zbar_ros
 {
@@ -49,9 +50,10 @@ namespace zbar_ros
     barcode_pub_ = nh_.advertise<std_msgs::String>("barcode", 10,
         boost::bind(&BarcodeReaderNodelet::connectCb, this),
         boost::bind(&BarcodeReaderNodelet::disconnectCb, this));
-    
+
     private_nh_.param<double>("throttle_repeated_barcodes", throttle_, 0.0);
-    if (throttle_ > 0.0){
+    if (throttle_ > 0.0)
+    {
       clean_timer_ = nh_.createTimer(ros::Duration(10.0), boost::bind(&BarcodeReaderNodelet::cleanCb, this));
     }
   };
@@ -128,7 +130,6 @@ namespace zbar_ros
         barcode_memory_.erase(it);
       }
     }
-
   }
 }  // namespace zbar_ros
 
